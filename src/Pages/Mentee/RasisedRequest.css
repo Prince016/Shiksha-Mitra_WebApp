@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto:wght@300;400&display=swap');
+
+.search-container{
+  /* width: 200px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px; */
+  margin-left: 51px;
+}
+
+.dropdown {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  padding: 4px;
+  margin-left: 226px;
+  width: 170px;
+}
+
+.dropdown:empty {
+  border: none;
+}
+
+.dropdown-row {
+  cursor: pointer;
+  text-align: start;
+  margin: 2px 0;
+  
+}
+
+.dropdown-row :hover{
+  background-color: gray;
+}
+
+.sub-name-sec{
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  margin-left: 74px;
+}
+
+.topic-sec{
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  margin-left: 99px;
+}
+
+.topic-sec textarea{
+  padding: 5px;
+  font-family: 'Roboto', sans-serif;
+  width: 169px;
+}
+.topic-text{
+
+}
+
+.topic-sec input{
+
+}
+
+.search-container input[type=text]{
+  /* margin: 3px; */
+   padding: 2px;
+   font-family: 'Roboto', sans-serif;
+
+}
+.status{
+  text-align: center;
+  background-color: #ffe5e4;
+  border-radius: 30px;
+  padding: 3px;
+  width: 218px;
+  /* margin-left: 21px; */
+  border: 1px solid #9a2d29;
+  margin: 3px;
+    margin-right: 25px;
+}
+
+.status h4{
+   color: #9a2d29;
+}
+
+.pending{
+  font-weight: 500;
+}
+
+.request-card{
+  justify-content: center;
+  display: grid;
+  column-gap: 20px;
+  row-gap: 20px;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+}
+
+.subject_name{
+  margin-left: 4px;
+  width: 166px;
+  height: 29px;
+}
+
+.addRequest_btn{
+  /* align-items: center !important; */
+  margin-left: 220px;
+}
+

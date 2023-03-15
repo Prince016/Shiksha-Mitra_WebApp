@@ -1,0 +1,19 @@
+.user_image {
+    text-align: center;
+}
+
+.user_img{
+    margin: 0.4rem;
+    border: 3px solid orange;
+    border-radius: 100px;
+    box-shadow: 0 1px 15px ;
+  
+}
+.user_name{
+    text-align: center;
+    color: white
+}
+
+.bold{
+    font-weight: bold;
+}

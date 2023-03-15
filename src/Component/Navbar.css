@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+.App-name{
+    font-family: 'Josefin Sans', sans-serif;
+    color: orange;
+    position: absolute;
+    /* top: 40%; */
+    /* left: 40%; */
+    margin-left: 77px;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, 
+            #ff6b08,  #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+/* h2{
+    position: absolute;
+    margin-left: 77px;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, 
+            #ff6b08,  #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+} */

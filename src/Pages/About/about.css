@@ -1,0 +1,45 @@
+.about-container{
+    width: 97%;
+    /* margin: 15px ; */
+    margin-top: 40px;
+    margin-right: 40px;
+    margin-left: 20px;
+    padding: 30px 36px;
+    background-color: white;
+    /* border: 3px solid gray; */
+    border-radius: 15px;
+    display: flex;
+    
+}
+
+.left-about{
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 22px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    
+}
+.left-about h3{
+    font-size: 33px;
+    font-weight: bold;
+    color: #6d2aed;
+
+}
+
+.right-about{
+    margin-top: auto;
+    margin-bottom: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.video{
+    /* border: 4px solid red; */
+    border-radius: 10px;
+
+}

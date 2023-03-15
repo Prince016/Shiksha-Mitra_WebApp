@@ -1,0 +1,130 @@
+.footer{
+    background-color: #ec7737;
+    margin-top: 50px;
+    padding: 35px;
+}
+
+.footer-container{
+    /* display: flex;
+    flex-direction: row; */
+}
+
+
+.heading{
+    display: flex;
+    flex-direction: row;
+}
+
+.heading-left{
+    width: 75%;
+}
+
+/* .heading-width{
+    width: ;
+} */
+
+.heading-left h1{
+    color: yellow;
+    font-weight: bold;
+    font-size: 46px;
+}
+
+.heading-left p{
+    color: white;
+    font-size: 22px;
+    width: 45%;
+}
+
+
+
+
+.heading-right{
+  width: 20%;
+}
+
+.heading-right h2{
+    color: yellow;
+    font-size: 33px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.icons .icon-1{
+    margin-left: 25px;
+    background-color: white;
+    border-radius: 40px;
+    font-size: 22px;
+    /* padding: 5px; */
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.midfooter{
+    display: flex;
+    flex-direction: row;
+}
+
+.midfooter-left{
+  width: 40%;
+}
+
+.midfooter-left h2{
+    color: yellow;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.midfooter-left p{
+    color: white;
+}
+
+.midfooter-left .locate{
+    margin-top: 28px;
+    padding: 10px;
+}
+
+.midfooter-right{
+   width: 40%;
+}
+
+.midfooter-right h2{
+    color: yellow;
+    margin-top: 30px;
+    /* margin-bottom: 20px; */
+}
+
+
+.footer-grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 5px;
+    gap: 10px;
+  }
+
+  .footer-grid-item{
+    padding: 10px;
+    font-size: 30px;
+    text-align: start;
+    
+    /* margin: 5px; */
+    
+}
+.footer-grid-item h1{
+    color: white;
+    font-size: 22px;
+    display: inline;
+    border-bottom: 4px solid white;
+  }
+
+.end-footer{
+    color: white;
+    margin-top: 50px;
+}
