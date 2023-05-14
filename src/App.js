@@ -14,6 +14,8 @@ import AddSubject from "./Pages/Admin/AddSubject";
 import RaisedRequest from "./Pages/Mentee/RaisedRequest";
 import ScheduleClass from "./Pages/Mentor/ScheduleClass";
 import History from "./Pages/Mentee/History";
+import Login from "./Pages/Auth/Login";
+import SignUp from "./Pages/Auth/SignUp";
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function App() {
           <Route exact path="/raisedRequest" element={<RaisedRequest />} />
           <Route exact path="/scheduleClass" element={<ScheduleClass />} />
           <Route exact path="/history" element={<History/>} />
+          <Route exact path="/login" element={<Login/>} />
+          <Route exact path="/signup" element={<SignUp />} />
+
         </Routes>
       {/* <Footer/> */}
       </Sidebar>

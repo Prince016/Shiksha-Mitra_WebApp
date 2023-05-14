@@ -28,7 +28,7 @@ const Sidebar = ({ children }) => {
     },
     {
       path: "/myclasses",
-      name: "My Classes",
+      name: "Upcoming Classes",
       // icon: <FaRegChartBar />,
       // icon: <SiGoogleclassroom />,
       icon: <FaAccusoft />,
