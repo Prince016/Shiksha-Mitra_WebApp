@@ -51,7 +51,7 @@ const Navbar = () => {
             <>
               <Button
                 LinkComponent={Link}
-                to="/auth"
+                to="/login"
                 variant="contained"
                 color="warning"
                 sx={{ margin: 2, borderRadius: 10 }}
@@ -61,7 +61,7 @@ const Navbar = () => {
 
               <Button
                 LinkComponent={Link}
-                to="/auth"
+                to="/signup"
                 variant="contained"
                 color="warning"
                 sx={{ margin: 2, borderRadius: 10 }}

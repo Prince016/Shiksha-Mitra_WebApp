@@ -15,7 +15,10 @@ import { NavLink } from "react-router-dom";
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const menuItem = [
+
+  const auth = localStorage.getItem("role");
+
+  const menuItemForMentee = [
     {
       path: "/",
       name: "Dashboard",
@@ -29,18 +32,23 @@ const Sidebar = ({ children }) => {
     {
       path: "/myclasses",
       name: "Upcoming Classes",
-      // icon: <FaRegChartBar />,
-      // icon: <SiGoogleclassroom />,
       icon: <FaAccusoft />,
     },
-    // {
-    //     path:"/comment",
-    //     name:"Name1",
-    //     icon:<FaCommentAlt/>
-    // },
+
+    {
+      path: "/history",
+      name: "History",
+      icon: <FaShoppingBag />,
+    },
     {
       path: "/subjects",
       name: "Enroll For classes",
+      icon: <FaShoppingBag />,
+    },
+
+    {
+      path: "/raisedRequest",
+      name: "RaisedRequest",
       icon: <FaShoppingBag />,
     },
     {
@@ -54,22 +62,63 @@ const Sidebar = ({ children }) => {
       icon: <FaShoppingBag />,
     },
     {
+      path: "/Logout",
+      name: "Logout",
+      icon: <FaSignOutAlt />,
+    },
+  ];
+
+  const menuItemForMentor = [
+    {
+      path: "/",
+      name: "Dashboard",
+      icon: <FaTh />,
+    },
+    {
+      path: "/about",
+      name: "About",
+      icon: <FaUserAlt />,
+    },
+    {
+      path: "/myclasses",
+      name: "Upcoming Classes",
+      icon: <FaAccusoft />,
+    },
+
+    {
       path: "/history",
       name: "History",
       icon: <FaShoppingBag />,
     },
     {
-      path: "/raisedRequest",
-      name: "RaisedRequest",
+      path: "/subjects",
+      name: "Enroll For classes",
+      icon: <FaShoppingBag />,
+    },
+
+    // {
+    //   path: "/raisedRequest",
+    //   name: "RaisedRequest",
+    //   icon: <FaShoppingBag />,
+    // },
+    // {
+    //   path: "/subject",
+    //   name: "Subject",
+    //   icon: <FaShoppingBag />,
+    // },
+    {
+      path: "/scheduleClass",
+      name: "ScheduleClass",
       icon: <FaShoppingBag />,
     },
     {
       path: "/Logout",
       name: "Logout",
       icon: <FaSignOutAlt />,
-      // icon:<Icons/>
     },
   ];
+
+
   return (
     <div className="container">
       <div

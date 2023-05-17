@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Sidebar from "./Component/Sidebar";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
@@ -18,27 +18,33 @@ import Login from "./Pages/Auth/Login";
 import SignUp from "./Pages/Auth/SignUp";
 
 function App() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+  const SignUpPage = location.pathname === "/signup";
+
   return (
     <React.Fragment>
-    <Navbar/>
-      <Sidebar>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/subjects" element={<Subjects />} />
-          <Route exact path="/subject" element={<AddSubject />} />
-          <Route exact path="/mentor" element={<Mentor />} />
-          <Route exact path="/auth" element={<Auth/>} />
-          <Route exact path="/myclasses" element={<MyClasses/>} />
-          <Route exact path="/raisedRequest" element={<RaisedRequest />} />
-          <Route exact path="/scheduleClass" element={<ScheduleClass />} />
-          <Route exact path="/history" element={<History/>} />
-          <Route exact path="/login" element={<Login/>} />
-          <Route exact path="/signup" element={<SignUp />} />
+      {isLoginPage || SignUpPage ? null : <Navbar />}
 
-        </Routes>
-      {/* <Footer/> */}
-      </Sidebar>
+    
+          <Sidebar>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/about" element={<About />} />
+              <Route exact path="/subjects" element={<Subjects />} />
+              <Route exact path="/subject" element={<AddSubject />} />
+              <Route exact path="/mentor" element={<Mentor />} />
+              {/* <Route exact path="/auth" element={<Auth/>} /> */}
+              <Route exact path="/myclasses" element={<MyClasses />} />
+              <Route exact path="/raisedRequest" element={<RaisedRequest />} />
+              <Route exact path="/scheduleClass" element={<ScheduleClass />} />
+              <Route exact path="/history" element={<History />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/signup" element={<SignUp />} />
+            </Routes>
+            {/* <Footer/> */}
+          </Sidebar>
+       
     </React.Fragment>
   );
 }
