@@ -1,0 +1,117 @@
+<!-- JSMJ -->
+<!DOCTYPE html>
+<html lang="en">
+  <!-- sites use for iocns  -->
+  <!-- https://www.flaticon.com/search?word=study -->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+      integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+      integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <style>
+    :root {
+      --navyblue: #022d6a;
+      --skyblue: #ebf0f7;
+    }
+
+    .NavyColor {
+      color: var(--navyblue);
+    }
+  </style>
+
+  <body>
+    <!-- <h1>JSMJ</h1> -->
+    <div class="serviceContainer p-4" style="background-color: var(--navyblue)">
+      <!-- DIVIDER 1  -->
+      <div class="hrDivider d-flex justify-content-center align-items-center">
+        <hr class="bg-white fw-semibold" style="height: 1px; width: 30%" />
+        <h5 class="px-5 text-center fw-semibold text-white fs-1 large">
+            Highlights
+        </h5>
+        <hr class="bg-white fw-semibold" style="height: 1px; width: 30%" />
+      </div>
+      <!-- SECTION 1 CARD  -->
+      <div class="py-auto d-flex justify-content-center align-items-center">
+        <div id="serviceCards" class="row"></div>
+      </div>
+    </div>
+
+    <script>
+      // OurServiceInfo = [
+      //     { 'icon': "resources/resourcesImg.png", 'title': "resouces management", 'content': "there is he subdata " },
+      //     { 'icon': "resources/peer-to-peer.png", 'title': "hellow here is data2", 'content': "there is he subdata " },
+      //     { 'icon': "resources/teaching.png", 'title': "hellow here is data2", 'content': "there is he subdata " },
+      //     { 'icon': "resources/network.png", 'title': "hellow here is data2", 'content': "there is he subdata " },
+      // ]
+      OurServiceInfo = [
+        {
+          icon: "resources/resourcesImg.png",
+          title: "Get Resources",
+          content: "Get resources on one platform                       ",
+        },
+        {
+          icon: "resources/peer-to-peer.png",
+          title: "Raise Request",
+          content: "Raise a request for academic support/ doubt clearance",
+        },
+        {
+          icon: "resources/sch.png",
+          title: "Scheduling",
+          content: "Schedule a class as per convenience",
+        },
+        {
+          icon: "resources/popular.png",
+          title: "Popularity",
+          content: "Star Mentors for highest tutoring hours and best feedback",
+        },
+      ];
+
+      var x = "";
+      OurServiceInfo.map((e) => {
+        x += `<div class="col-sm d-flex justify-content-center align-items-center">
+                    <div class="card my-2" style="width: 18rem; height:14rem">
+                        <div class="card-body">
+                            <div class="serviceCardImg d-flex justify-content-center align-items-center"><img
+                                    src=${e.icon} alt="" style="height:60px;width:60px;"> </div>
+                            <h5 class="card-title serviceCardTitle text-center">${e.title}</h5>
+                            <div class="d-flex justify-content-center">
+                                <hr class="bg-black" style="height:1px;width:50%">
+                            </div>
+                            <p class="card-text serviceCardContent text-center">${e.content}</p>
+
+                        </div>
+                    </div>
+                </div>`;
+      });
+      document.getElementById("serviceCards").innerHTML = x;
+      console.log(x);
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

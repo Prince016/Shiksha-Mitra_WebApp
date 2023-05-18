@@ -17,3 +17,14 @@
 .bold{
     font-weight: bold;
 }
+
+.warningicon {
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+  }
+  
+.warningicon:hover {
+    font-weight: 900;
+    color: blue;
+  }

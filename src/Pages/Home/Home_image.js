@@ -5,8 +5,8 @@ import './home.css'
 const Home_image = () => {
   return (
     <>
-        <div className="main-img">
-            <img src={home_img} alt="Homeimage"  />
+        <div className="main-img" >
+            <img src={home_img} style={{height:"200px"}} alt="Homeimage"  />
         </div>
     </>
   )

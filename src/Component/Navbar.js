@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 import { useStyles } from "./utils";
 import nculogo from "./images/logo.png";
-import './Navbar.css'
+import "./Navbar.css";
 
 const Navbar = () => {
   const classes = useStyles();
 
+  const navigate = useNavigate();
+
   const [value, setValue] = useState();
+
+
+  
+  const navigateHome = () => {
+    // Handle click event
+    navigate('/')
+  };
 
   return (
     <div>
@@ -33,22 +43,29 @@ const Navbar = () => {
               width={63}
               height={57}
             />
-
           </Typography>
-            <h2
-              style={{
-                // color:
-                //   "linear-gradient(90deg, rgba(58,75,180,1) 2%, rgba(116,49,110,1) 36%, rgba(2,0,161,1) 73%, rgba(69,92,252,1) 100%)",
-                // color:
-                //   "orange",
-              }}
-              className="App-name"
-            >
-              SHIKSHA MITRA
-            </h2>
+
+          <h2
+            
+            style={{
+              alignItems: "center",
+              marginTop: "auto",
+              marginBottom: "auto",
+              // color:
+              //   "linear-gradient(90deg, rgba(58,75,180,1) 2%, rgba(116,49,110,1) 36%, rgba(2,0,161,1) 73%, rgba(69,92,252,1) 100%)",
+              // color:
+              //   "orange",
+              cursor: "pointer",
+            }}
+            onClick={navigateHome}
+            className="App-name"
+          >
+            SHIKSHA MITRA
+          </h2>
 
           <Box display="flex" marginLeft="auto">
             <>
+            
               <Button
                 LinkComponent={Link}
                 to="/login"

@@ -1,0 +1,63 @@
+:root {
+    /* // origina */
+    /* --navyblue: #022d6a;  */
+    --navyblue: #1d3557; 
+  /* --navyblue: #053c8a;   v1 */
+  /* //original */
+  --skyblue: #ebf0f7; 
+  /* --skyblue: #e5effc;   v1 */
+}
+
+@media screen and (max-width: 839px) {
+  .cardContent {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 612px) {
+  .OverlapContent {
+    display: none;
+  }
+}
+
+.card-img {
+  max-height: 500px;
+}
+#loginbtn:hover {
+  background: var(--skyblue);
+  border-color: var(--navyblue);
+  color: var(--navyblue);
+  font-weight: 500;
+  font-size: larger;
+}
+#loginbtn {
+  border-color: var(--navyblue);
+  color: var(--skyblue);
+  margin-right: 5px;
+}
+.navlinks {
+  color: var(--skyblue);
+  border-radius: 8%;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.navlinks:hover {
+  border-color: var(--skyblue);
+  background-color: var(--skyblue);
+  color: var(--navyblue);
+}
+.scrollTopBtn {
+  background-color: blue;
+}
+.scrollTopBtn:hover {
+  box-shadow: 8px 8px 2px lightblue;
+}
+#mainDiv {
+  position: relative;
+  background-color: var(--skyblue);
+}
+#scrollBtnDiv {
+  bottom: 16px;
+  right: 42px;
+}
+
