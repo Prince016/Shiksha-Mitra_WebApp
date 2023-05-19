@@ -23,7 +23,7 @@ function History() {
   ];
 
   return (
-    <div className="history-table-container">
+    <div className="history-table-container" style={{padding:"20px",paddingTop:"80px"}}>
     <table className="history-table">
       <thead>
         <tr>

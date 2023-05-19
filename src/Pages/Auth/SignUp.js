@@ -21,8 +21,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import  { useState } from 'react';
-import axios from 'axios';
+import { useState } from "react";
+import axios from "axios";
 
 function Copyright(props) {
   return (
@@ -52,181 +52,325 @@ const theme = createTheme();
 
 // axios intergeration
 const Signup = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-    const [role, setRole] = React.useState("");
-  
-    const handleChange = (event) => {
-      console.log(event.target.value); //printing
-      setRole(event.target.value);
-    };
-    
-  
-    const navigate = useNavigate();
-  
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-      console.log("role",role);//not 
-      try {
-        // Make the sign-up API request
-        const response = await axios.post('http://localhost:9090/api/auth/signup', {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = React.useState("");
+  const [name, setname] = React.useState("");
+  const [branch, setbranch] = React.useState("");
+  const [course, setcourse] = React.useState("");
+  const [year, setyear] = React.useState("");
+  const [dob, setdob] = React.useState("");
+  const [phone, setphone] = React.useState("");
+  const [cgpa, setcgpa] = React.useState("");
+  const [isVerified, setVerified] = React.useState("true");
+  const [profilePic, setprofilePic] = React.useState("https://rb.gy/9z0d7");
+
+  // "emailId": "aastha@gmail.com",
+  // "name": "aastha",
+  // "profilePic": "https://rb.gy/9z0d7",
+  // "branch": "btech",
+  // "course": "coputer",
+  // "year": "2022",
+  // "dob": "1190-07-02",
+  // "phone": "8999192899",
+  // "cgpa": 9.6,
+  // "isVerified": true
+
+  const handleChange = (event) => {
+    console.log(event.target.value); //printing
+    setRole(event.target.value);
+  };
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("role", role); //not
+    console.log("aftersignup" ,email,password,role, name,branch,course, year, dob,phone, cgpa, isVerified, profilePic);
+    try {
+      // Make the sign-up API request
+      const response = await axios.post(
+        "http://localhost:9090/api/auth/signup",
+        {
           email: email,
           password: password,
-          role:role
-        });
-  
-        // Handle the response
-        console.log("signUp",response.data); // You can do something with the response data
-  
-        // Clear the form fields
-        setEmail('');
-        setPassword('');
-        if (response.data != null) {
-          alert("User Successfully Register !!!.. ");
-          navigate("/login");
+          role: role,
         }
-      } catch (error) {
-        // Handle the error
-        console.error(error);
+      );
+      const responseProfile = await axios.post(
+        "http://localhost:9090/api/userDetails",
+        {
+          emailId:email,
+          name:name,
+          profilePic:"https://rb.gy/9z0d7",
+          branch:branch,
+          course:course,
+          year:year,
+          dob:dob,
+          phone:phone,
+          cgpa: cgpa,
+          isVerified:true
       }
-  
-     
-    };
-   
-  
-    return (
-      <ThemeProvider theme={theme}>
-        <Grid container component="main" sx={{ height: "100vh" }}>
-          <CssBaseline />
-          <Grid
-            item
-            xs={false}
-            sm={4}
-            md={7}
-            sx={{
-              backgroundImage: "url(https://source.unsplash.com/random?Crypto)",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: (t) =>
-                t.palette.mode === "light"
-                  ? t.palette.grey[50]
-                  : t.palette.grey[900],
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-            <Box
-              sx={{
-                my: 8,
-                mx: 4,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign UP
-              </Typography>
-              <Box
-                component="form"
-                noValidate
-                onSubmit={handleSubmit}
-                sx={{ mt: 1 }}
-              >
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                 
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-  
-                <FormControl
-                  fullWidth
-                  style={{
-                    width: "20%",
-                    textAlign: "center",
-                    marginLeft: "200px",
-                    marginTop: "20px",
-                  }}
-                >
-                  <InputLabel id="demo-simple-select-label">Role</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={role}
-                    label="Role"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value="1">Mentor</MenuItem>
-                    <MenuItem value="2">Mentee</MenuItem>
-                    {/* <MenuItem value="3">Thirty</MenuItem> */}
-                  </Select>
-                </FormControl>
-                <br />
-  
-                <FormControlLabel
-                  style={{ marginTop: "20px" }}
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Sign Up
-                </Button>
-                <Grid container>
-                  <Grid item xs>
-                    <Link href="#" variant="body2">
-                      Forgot password?
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link to="/login" variant="body2">
-                      {"Already have an account? Login"}
-                    </Link>
-                  </Grid>
-                </Grid>
-                <Copyright sx={{ mt: 5 }} />
-              </Box>
-            </Box>
-          </Grid>
-        </Grid>
-      </ThemeProvider>
-    );
+      );
+      // Handle the response
+      console.log("signUp", response.data); // You can do something with the response data
+      console.log("signUp Eroor", response.message); // You can do something with the response data
+      console.log("profile added", responseProfile.data); // You can do something with the response data
+
+      // Clear the form fields
+      setEmail("");
+      setPassword("");
+      setRole("");
+      setname("");
+      setbranch("");
+      setcourse("");
+      setdob("");
+      setyear("");
+      setcgpa("");
+      if (responseProfile.data != null) {
+        alert("User Profile Added..... ");
+      }
+      if (response.data != null ) {
+        alert("User Successfully Register !!!.. ");
+        navigate("/login");
+      }
+    } catch (error) {
+      // Handle the error
+      console.error(error);
+    }
   };
-  
-  export default Signup;
 
+  return (
+    <ThemeProvider theme={theme}>
+      <Grid container component="main" sx={{ height: "100vh" }}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage:
+              "url(https://source.unsplash.com/random?Mentoring)",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: (t) =>
+              t.palette.mode === "light"
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign UP
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1 }}
+            >
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="name"
+                label="name"
+                type="text"
+                id="name"
+                autoFocus
+                value={name}
+                onChange={(e) => setname(e.target.value)}
+              />
 
+<FormControl
+                fullWidth
+                style={{
+                  width: "20%",
+                  textAlign: "center",
+                  marginLeft: "200px",
+                  marginTop: "20px",
+                }}
+              >
+                <InputLabel id="branch">branch</InputLabel>
+                <Select
+                  labelId="branch"
+                  id="branchId"
+                  value={branch}
+                  label="branch"
+                  onChange={(e) => setbranch(e.target.value)}
+                >
+                  <MenuItem value="CLL">Centre for Languages Learning </MenuItem>
+                  <MenuItem value="APS">Department of Applied Sciences</MenuItem>
+                  <MenuItem value="MDE">Media & Entertainment</MenuItem>
+                  <MenuItem value="SOET">School of Engineering and Technology</MenuItem>
+                  <MenuItem value="SOL">School of Law</MenuItem>
+                  <MenuItem value="SOML">School of Management and Liberal Studies</MenuItem>
+                  {/* <MenuItem value="3">Thirty</MenuItem> */}
+                </Select>
+              </FormControl>
 
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="course"
+                label="course"
+                type="text"
+                id="course"
+                autoFocus
+                value={course}
+                onChange={(e) => setcourse(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="year"
+                label="year"
+                type="text"
+                id="year"
+                autoFocus
+                value={year}
+                onChange={(e) => setyear(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="dob"
+                label="DOB"
+                type="date"
+                id="dob"
+                autoFocus
+                value={dob}
+                onChange={(e) => setdob(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="phone"
+                label="phone"
+                type="tel"
+                id="phone"
+                pattern="[1-9]{1}[0-9]{9}"
+                autoFocus
+                value={phone}
+                onChange={(e) => setphone(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="cgpa"
+                label="cgpa"
+                type="tel"
+                id="cgpa"
+                pattern="[1-9]{1}[0-9]{2}"
+                autoFocus
+                placeholder="9.00"
+                value={cgpa}
+                onChange={(e) => setcgpa(e.target.value)}
+              />
 
+              <FormControl
+                fullWidth
+                style={{
+                  width: "20%",
+                  textAlign: "center",
+                  marginLeft: "200px",
+                  marginTop: "20px",
+                }}
+              >
+                <InputLabel id="demo-simple-select-label">Role</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={role}
+                  label="Role"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="1">Mentor</MenuItem>
+                  <MenuItem value="2">Mentee</MenuItem>
+                  {/* <MenuItem value="3">Thirty</MenuItem> */}
+                </Select>
+              </FormControl>
+              <br />
 
+              <FormControlLabel
+                style={{ marginTop: "20px" }}
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign Up
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link to="/login" variant="body2">
+                    {"Already have an account? Login"}
+                  </Link>
+                </Grid>
+              </Grid>
+              <Copyright sx={{ mt: 5 }} />
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </ThemeProvider>
+  );
+};
+
+export default Signup;
 
 // const Signup = () => {
 //   const [role, setRole] = React.useState("");

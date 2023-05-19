@@ -7,7 +7,7 @@ const WelcomePage = () => {
       {/* <div className="container"> */}
       <div className="welcome-container">
         <div className="heading">
-          <h1>Welcome to Shiskha Mitra</h1>
+          <h1 style={{color:"#022D6A"}}>Welcome to Shiskha Mitra</h1>
         </div>
         <div className="content" >
           <p>

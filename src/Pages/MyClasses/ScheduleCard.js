@@ -5,13 +5,14 @@ function ScheduleCard({ tutorName, topic, dateTime, classLink }) {
   return (
     <div className="schedule-card">
       <div className="card-header">
-        <h3>{tutorName}</h3>
+       
       </div>
       <div className="card-body">
-        <h4>{topic}</h4>
-        <p>Date & Time: {dateTime}</p>
+      <p><b>Mentor</b>: {tutorName}</p>
+        <p><b>Topic</b> :{topic}</p>
+        <p><b>Date & Time</b>: {dateTime}</p>
         <a href={classLink} target="_blank" rel="noopener noreferrer">
-          Join Class
+          Room No.22
         </a>
       </div>
     </div>

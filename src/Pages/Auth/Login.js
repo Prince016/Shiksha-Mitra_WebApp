@@ -20,7 +20,8 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useState } from "react";
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import cookie from 'react-cookie'
+import {cookie} from 'react-cookie';
+
 
 function Copyright(props) {
   return (
@@ -32,7 +33,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Billing Info
+       TheNorthcapUniversity
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -79,29 +80,37 @@ const Login = () => {
         const res = response.data;
         const email =res.email;
         const role =res.roles;
+        const tokenString1 =res.tokenString;
         console.log("reponse",res);
 
 // ********************
         // Get cookies from document
-        console.log(response.headers);
-        
-        const cookieHeaders = response.headers['Set-Cookie'];
-        console.log(cookieHeaders);
-        if (cookieHeaders) {
-          // Iterate over cookie headers and set cookies in the browser
-          cookieHeaders.forEach((cookieHeader) => {
-            const cookie = cookieHeader.split(';')[0];
-            Cookies.set(cookie.split('=')[0], cookie.split('=')[1]);
-          });
-        }
+        // console.log([...response.headers.entries()]);
+        // console.log(response.headers.get('Set-Cookie'));
+        // const cookies = new Cookies();
+        // var cookieValue = cookies.load('jwtCookieName');
+        // console.log("----------",cookieValue);
+
+        // console.log( cookie.load('jwtCookieName'));
+        // const cookieHeaders = response.headers['Set-Cookie'];
+        // console.log(cookieHeaders);
+        // if (cookieHeaders) {
+        //   // Iterate over cookie headers and set cookies in the browser
+        //   cookieHeaders.forEach((cookieHeader) => {
+        //     const cookie = cookieHeader.split(';')[0];
+        //     Cookies.set(cookie.split('=')[0], cookie.split('=')[1]);
+        //   });
+        // }
         // Access and use the cookies
-        const cookieValue = Cookies.get('cookieName');
-        console.log('Cookie Value:', cookieValue);
+        // const cookieValue = Cookies.get('jwtCookieName');
+        // console.log('Cookie Value:', cookieValue);
 
   // *************************************
         // Store the user's email and role in localStorage
         localStorage.setItem('email', email);
-        // localStorage.setItem('cookies', cookies);
+        const ck=tokenString1.split(';')[0];
+        const ckVal =ck.split('=')[1];
+        localStorage.setItem('cookies', ckVal);
         localStorage.setItem('role', role);
   
         // Clear the form fields
@@ -131,7 +140,7 @@ const Login = () => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: "url(https://source.unsplash.com/random?Crypto)",
+            backgroundImage: "url(https://source.unsplash.com/random?Mentoring)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"

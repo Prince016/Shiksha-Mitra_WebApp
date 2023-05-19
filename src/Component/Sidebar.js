@@ -20,6 +20,8 @@ const Sidebar = ({ children }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const authrole = localStorage.getItem("role");
+  if(role==1){var role="Mentor"}else{var role="Mentee"}
+  const email = localStorage.getItem("email");
   const condition1 = authrole === "1"; //mentor
   const condition2 = authrole === "2"; //mentee
   const menuItemForMentee = [
@@ -29,7 +31,7 @@ const Sidebar = ({ children }) => {
       icon: <FaTh />,
     },
     {
-      path: "/about",
+      path: "/aboutme",
       name: "About",
       icon: <FaUserAlt />,
     },
@@ -44,11 +46,11 @@ const Sidebar = ({ children }) => {
       name: "History",
       icon: <FaShoppingBag />,
     },
-    {
-      path: "/subjects",
-      name: "Enroll For classes",
-      icon: <FaShoppingBag />,
-    },
+    // {
+    //   path: "/subjects",
+    //   name: "Enroll For classes",
+    //   icon: <FaShoppingBag />,
+    // },
 
     {
       path: "/raisedRequest",
@@ -56,20 +58,25 @@ const Sidebar = ({ children }) => {
       icon: <FaShoppingBag />,
     },
     {
-      path: "/subject",
-      name: "Subject",
+      path: "/raiseMyRequest",
+      name: "RaiseMyRequest",
       icon: <FaShoppingBag />,
     },
+    // {
+    //   path: "/subject",
+    //   name: "Subject",
+    //   icon: <FaShoppingBag />,
+    // },
     {
       path: "/scheduleClass",
       name: "ScheduleClass",
       icon: <FaShoppingBag />,
     },
-    {
-      path: "/Logout",
-      name: "Logout",
-      icon: <FaSignOutAlt />,
-    },
+    // {
+    //   path: "/Logout",
+    //   name: "Logout",
+    //   icon: <FaSignOutAlt />,
+    // },
   ];
 
   const menuItemForMentor = [
@@ -94,11 +101,11 @@ const Sidebar = ({ children }) => {
       name: "History",
       icon: <FaShoppingBag />,
     },
-    {
-      path: "/subjects",
-      name: "Enroll For classes",
-      icon: <FaShoppingBag />,
-    },
+    // {
+    //   path: "/subjects",
+    //   name: "Enroll For classes",
+    //   icon: <FaShoppingBag />,
+    // },
 
     // {
     //   path: "/raisedRequest",
@@ -115,11 +122,11 @@ const Sidebar = ({ children }) => {
       name: "ScheduleClass",
       icon: <FaShoppingBag />,
     },
-    {
-      path: "/Logout",
-      name: "Logout",
-      icon: <FaSignOutAlt />,
-    },
+    // {
+    //   path: "/Logout",
+    //   name: "Logout",
+    //   icon: <FaSignOutAlt />,
+    // },
   ];
 
   return (
@@ -128,10 +135,11 @@ const Sidebar = ({ children }) => {
         style={{
           position: "relative",
           width: isOpen ? "250px" : "50px",
-          height: "150%",
+          height: "700px",
           transition: "width 1s, height 1s",
 
-          background: "linear-gradient( #ff6b08 ,  #eedd44)",
+          // background: "linear-gradient( #ff6b08 ,  #eedd44)",
+          background: "#022D6A",
         }}
         className="sidebar"
       >
@@ -145,10 +153,13 @@ const Sidebar = ({ children }) => {
                 <FaBars onClick={toggle} />
               </div>
             </div>
-            {authrole === '1' || authrole === '2' && (
+            {authrole ? (
         <div style={{ display: isOpen ? "block" : "none"}}>
           {/* // personal section in side bar  */}
           <div>
+            <div style={{ display: isOpen ? "none" : "block", height: "90px" }}>
+
+            </div>
            <div
               style={{ display: isOpen ? "block" : "none", lineHeight: "38px" }}
             >
@@ -156,23 +167,23 @@ const Sidebar = ({ children }) => {
                 <Image
                   className="user_img"
                   roundedCircle="true"
-                  src={user}
+                  // src={user}
+                  src="https://rb.gy/9z0d7"
                   width="160"
                   alt="user"
                 />
               </div>
               <div className="user_name">
-                <p className="bold">Rahul Aggarwal</p>
-                <p>
-                  Roll No:- <span className="bold">22CSU000</span>
-                </p>
+                <p className="bold">{email}</p>
+                <p className="normal">({role})</p>
+               
               </div>
             </div>
             </div>
 
           {/* // */}
         </div>
-      )}
+      ):null}
            
 
           </div>

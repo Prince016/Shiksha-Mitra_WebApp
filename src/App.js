@@ -24,9 +24,11 @@ import Login from "./Pages/Auth/Login";
 import SignUp from "./Pages/Auth/SignUp";
 import AboutMeSection from "./Pages/About/AboutMeSection";
 import LandingPage from "./Pages/LandingPage/homeV2";
+import RaiseMyRequest from "./Pages/Mentee/RaiseMyRequest"
 
 function App() {
   const location = useLocation();
+  const loginUser=localStorage.getItem('email');
   const isLoginPage = location.pathname === "/login";
   const SignUpPage = location.pathname === "/signup";
 
@@ -38,8 +40,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<SignUp />} />
       </Routes>
-
-      <div style={{display:"flex"}}>
+      {loginUser ?  <div style={{display:"flex"}}>
         <div>
           <Sidebar />
         </div>
@@ -53,6 +54,7 @@ function App() {
             <Route exact path="/mentor" element={<Mentor />} />
             {/* <Route exact path="/auth" element={<Auth/>} /> */}
             <Route exact path="/myclasses" element={<MyClasses />} />
+            <Route exact path="/raiseMyRequest" element={< RaiseMyRequest/>} />
             <Route exact path="/raisedRequest" element={<RaisedRequest />} />
             <Route exact path="/scheduleClass" element={<ScheduleClass />} />
             <Route exact path="/history" element={<History />} />
@@ -62,7 +64,8 @@ function App() {
             {/* Redirect to login if the route is not found */}
           </Routes>
         </div>
-      </div>
+      </div> : null}
+    
       {/* <Footer/> */}
     </React.Fragment>
   );

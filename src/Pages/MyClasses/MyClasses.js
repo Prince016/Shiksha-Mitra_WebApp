@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ScheduleCard from "./ScheduleCard";
 
 function MyClasses() {
@@ -30,16 +30,32 @@ function MyClasses() {
     },
     // Add more schedule items as needed
   ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from API and set the data state
+    axios.get('http://localhost:9090/ClassSchedule/get')
+      .then(response => {
+        setData(response.data);
+        console.log(response.data);
+        console.log(data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
+
   return (
     <>
       <div className="schedule-grid" style={{ width: "50%" , marginLeft:"auto" ,marginRight:"auto"}}>
-        {scheduleData.map((schedule, index) => (
+        {data.map((data, index) => (
           <ScheduleCard
             key={index}
-            tutorName={schedule.tutorName}
-            topic={schedule.topic}
-            dateTime={schedule.dateTime}
-            classLink={schedule.classLink}
+            tutorName={data.peerTutor}
+            topic={data.topicName}
+            dateTime={data.dateTime}
+            classLink="Room 22"
           />
         ))}
       </div>

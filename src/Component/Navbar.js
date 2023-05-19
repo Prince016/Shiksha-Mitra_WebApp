@@ -13,13 +13,22 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const [value, setValue] = useState();
-
+  
+  const loginUser=localStorage.getItem('email');
 
   
-  const navigateHome = () => {
-    // Handle click event
-    navigate('/')
+  
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+      // empty the user's email and role in localStorage
+      localStorage.removeItem('email');
+      localStorage.removeItem('cookies');
+      localStorage.removeItem('role');
+      navigate("/");
+    
   };
+ 
 
   return (
     <div>
@@ -51,53 +60,69 @@ const Navbar = () => {
               alignItems: "center",
               marginTop: "auto",
               marginBottom: "auto",
-              // color:
+              color:"#022D6A",
               //   "linear-gradient(90deg, rgba(58,75,180,1) 2%, rgba(116,49,110,1) 36%, rgba(2,0,161,1) 73%, rgba(69,92,252,1) 100%)",
               // color:
               //   "orange",
               cursor: "pointer",
             }}
-            onClick={navigateHome}
+            onClick={handleLogin}
             className="App-name"
           >
             SHIKSHA MITRA
           </h2>
 
-          <Box display="flex" marginLeft="auto">
-            <>
-            
-              <Button
-                LinkComponent={Link}
-                to="/login"
-                variant="contained"
-                color="warning"
-                sx={{ margin: 2, borderRadius: 10 }}
-              >
-                Login
-              </Button>
+          {loginUser ?   <Box display="flex" marginLeft="auto">  <Button
+                 LinkComponent={Link}
+                 to="/signup"
+                 variant="contained"
+                 color="warning"
+                 sx={{ margin: 2, borderRadius: 10 }}
+                 style={{backgroundColor:"#022D6A"}}
+                 onClick={handleLogin }
+               >
+                 SignOut
+               </Button> </Box> : 
+             <Box display="flex" marginLeft="auto">
+             <>
+             
+               <Button
+                 LinkComponent={Link}
+                 to="/login"
+                 variant="contained"
+                 color="warning"
+                 sx={{ margin: 2, borderRadius: 10 }}
+                 
+                 style={{backgroundColor:"#022D6A"}}
+               >
+                 Login
+               </Button>
+ 
+               <Button
+                 LinkComponent={Link}
+                 to="/signup"
+                 variant="contained"
+                 color="warning"
+                 sx={{ margin: 2, borderRadius: 10 }}
+                 style={{backgroundColor:"#022D6A"}}
+               >
+                 Signup
+               </Button>
+             </>
+ 
+             {/* <Button
+             onClick={() => dispath(authActions.logout())}
+             LinkComponent={Link}
+             to="/auth"
+             variant="contained"
+             color="warning"
+             sx={{ margin: 2, borderRadius: 10 }}
+           >
+             LogOut
+           </Button> */}
+           </Box>}
 
-              <Button
-                LinkComponent={Link}
-                to="/signup"
-                variant="contained"
-                color="warning"
-                sx={{ margin: 2, borderRadius: 10 }}
-              >
-                Signup
-              </Button>
-            </>
-
-            {/* <Button
-            onClick={() => dispath(authActions.logout())}
-            LinkComponent={Link}
-            to="/auth"
-            variant="contained"
-            color="warning"
-            sx={{ margin: 2, borderRadius: 10 }}
-          >
-            LogOut
-          </Button> */}
-          </Box>
+       
         </Toolbar>
       </AppBar>
     </div>
