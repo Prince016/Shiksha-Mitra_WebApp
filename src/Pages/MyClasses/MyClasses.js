@@ -37,7 +37,7 @@ function MyClasses() {
     axios.get('http://localhost:9090/ClassSchedule/get')
       .then(response => {
         setData(response.data);
-        console.log(response.data);
+        console.log("---------",response.data);
         console.log(data);
       })
       .catch(error => {
@@ -53,7 +53,8 @@ function MyClasses() {
           <ScheduleCard
             key={index}
             tutorName={data.peerTutor}
-            topic={data.topicName}
+            subject={data.topicName}
+            topic={data.topicContext}
             dateTime={data.dateTime}
             classLink="Room 22"
           />

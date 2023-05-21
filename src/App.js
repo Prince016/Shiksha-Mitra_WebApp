@@ -25,6 +25,7 @@ import SignUp from "./Pages/Auth/SignUp";
 import AboutMeSection from "./Pages/About/AboutMeSection";
 import LandingPage from "./Pages/LandingPage/homeV2";
 import RaiseMyRequest from "./Pages/Mentee/RaiseMyRequest"
+import MentorHistory from "./Pages/Mentor/historyMentor"
 
 function App() {
   const location = useLocation();
@@ -58,6 +59,7 @@ function App() {
             <Route exact path="/raisedRequest" element={<RaisedRequest />} />
             <Route exact path="/scheduleClass" element={<ScheduleClass />} />
             <Route exact path="/history" element={<History />} />
+            <Route exact path="/mentorhistory" element={<MentorHistory />} />
 
             <Route exact path="/aboutme" element={<AboutMeSection />} />
             <Route exact path="/myclasses" element={<MyClasses />} />

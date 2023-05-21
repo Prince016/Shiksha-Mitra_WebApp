@@ -20,7 +20,7 @@ const Sidebar = ({ children }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const authrole = localStorage.getItem("role");
-  if(role==1){var role="Mentor"}else{var role="Mentee"}
+ 
   const email = localStorage.getItem("email");
   const condition1 = authrole === "1"; //mentor
   const condition2 = authrole === "2"; //mentee
@@ -46,37 +46,16 @@ const Sidebar = ({ children }) => {
       name: "History",
       icon: <FaShoppingBag />,
     },
-    // {
-    //   path: "/subjects",
-    //   name: "Enroll For classes",
-    //   icon: <FaShoppingBag />,
-    // },
-
-    {
-      path: "/raisedRequest",
-      name: "RaisedRequest",
-      icon: <FaShoppingBag />,
-    },
     {
       path: "/raiseMyRequest",
       name: "RaiseMyRequest",
       icon: <FaShoppingBag />,
     },
-    // {
-    //   path: "/subject",
-    //   name: "Subject",
-    //   icon: <FaShoppingBag />,
-    // },
     {
-      path: "/scheduleClass",
-      name: "ScheduleClass",
+      path: "/raisedRequest",
+      name: "RaisedRequest",
       icon: <FaShoppingBag />,
     },
-    // {
-    //   path: "/Logout",
-    //   name: "Logout",
-    //   icon: <FaSignOutAlt />,
-    // },
   ];
 
   const menuItemForMentor = [
@@ -95,38 +74,18 @@ const Sidebar = ({ children }) => {
       name: "Upcoming Classes",
       icon: <FaAccusoft />,
     },
-
     {
-      path: "/history",
+      path: "/mentorhistory",
       name: "History",
       icon: <FaShoppingBag />,
     },
-    // {
-    //   path: "/subjects",
-    //   name: "Enroll For classes",
-    //   icon: <FaShoppingBag />,
-    // },
-
-    // {
-    //   path: "/raisedRequest",
-    //   name: "RaisedRequest",
-    //   icon: <FaShoppingBag />,
-    // },
-    // {
-    //   path: "/subject",
-    //   name: "Subject",
-    //   icon: <FaShoppingBag />,
-    // },
+   
     {
       path: "/scheduleClass",
       name: "ScheduleClass",
       icon: <FaShoppingBag />,
     },
-    // {
-    //   path: "/Logout",
-    //   name: "Logout",
-    //   icon: <FaSignOutAlt />,
-    // },
+    
   ];
 
   return (
@@ -135,7 +94,7 @@ const Sidebar = ({ children }) => {
         style={{
           position: "relative",
           width: isOpen ? "250px" : "50px",
-          height: "700px",
+          height: "1000px",
           transition: "width 1s, height 1s",
 
           // background: "linear-gradient( #ff6b08 ,  #eedd44)",
@@ -175,7 +134,8 @@ const Sidebar = ({ children }) => {
               </div>
               <div className="user_name">
                 <p className="bold">{email}</p>
-                <p className="normal">({role})</p>
+                <p className="normal">{condition1?"( mentor )":"( mentee )"}</p>
+                
                
               </div>
             </div>
@@ -190,7 +150,7 @@ const Sidebar = ({ children }) => {
          
         </div>
 
-        {condition1 ? (
+        {condition2 ? (
           <div>
             {menuItemForMentee.map((item, index) => (
               <NavLink
@@ -209,7 +169,7 @@ const Sidebar = ({ children }) => {
               </NavLink>
             ))}
           </div>
-        ) : condition2 ? (
+        ) : condition1 ? (
           <div>
             {menuItemForMentor.map((item, index) => (
               <NavLink

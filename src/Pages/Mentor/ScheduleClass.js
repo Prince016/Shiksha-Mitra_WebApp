@@ -16,7 +16,7 @@ const ScheduleClass = () => {
     dateTime: "",
     duration: "",
   });
-
+  const emailMentor=localStorage.getItem('email');
   useEffect(() => {
     fetchData();
   }, []);
@@ -52,7 +52,7 @@ const ScheduleClass = () => {
     console.log(card);
     const req = {
       classId: cardId,
-      peerTutor: card.menteeEmailId,
+      peerTutor: emailMentor,
       schoolName: "",
       topicName: card.subjectName,
       topicContext: card.addTopic,
@@ -73,7 +73,7 @@ const ScheduleClass = () => {
           )
           .then((response) => {
             console.log("status update", response.data);
-            
+            alert("ClassScheduled Successfully !!")
             // setData(updatedData);
           })
           .catch((error) => {

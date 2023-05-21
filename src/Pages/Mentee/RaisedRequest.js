@@ -14,9 +14,10 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import "./RequestCards.css"; // Import the custom CSS file
 import { faHandPaper } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link,useNavigate  } from "react-router-dom";
 
 const RaisedRequest = () => {
+  const navigate = useNavigate();
   // const [val, setVal] = useState("");
   const data = [
     "Computer Networks",
@@ -71,7 +72,9 @@ const RaisedRequest = () => {
       );
 
       // Perform any additional actions upon successful cancellation
-      console.log("deleted succefully");
+      alert("deleted succefully");
+      navigate("/raiseMyRequest");
+      // Navigate("/raiseMyRequest");
     } catch (error) {
       console.error(error);
       // Handle the error or show a relevant message to the user
@@ -120,9 +123,9 @@ const RaisedRequest = () => {
                   </p>
                   <p className="card-text">
                     <b>Status</b> :{" "}
-                    {request.status ? "Pending" : "Scheduled check MYCLASSES"}
+                    {request.status==false ? "Pending" : "Scheduled check MYCLASSES"}
                   </p>
-                  {request.status ? (
+                  {request.status==false ? (
                     <button
                       className="btn btn-danger cancel-button"
                       onClick={() =>
